@@ -1,0 +1,1 @@
+Use this to create QR Codes.
