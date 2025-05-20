@@ -9,7 +9,7 @@ Logo_link = 'logo.png'
 logo = Image.open(Logo_link)
 
 # taking base width
-basewidth = 300
+basewidth = 200
 
 # adjust image size
 wpercent = (basewidth/float(logo.size[0]))
@@ -35,11 +35,11 @@ new_width, new_height = logo.size
 
 QRcode = qrcode.QRCode(
     error_correction=qrcode.constants.ERROR_CORRECT_H,
-    box_size=20
+    box_size=25
 )
 
 # taking url or text
-url = 'https://www.atapir.com/'
+url = 'https://www.flcc-sf.org/'
 
 # adding URL or text to QRcode
 QRcode.add_data(url)
@@ -54,12 +54,13 @@ QRcolor = 'Black'
 QRimg = QRcode.make_image(
     fill_color=QRcolor, back_color="white").convert('RGBA')
 
+
 # set size of QR code
 pos = ((QRimg.size[0] - new_width) // 2,
        (QRimg.size[1] - new_height) // 2)
 QRimg.paste(logo, pos)
 
 # save the QR code generated
-QRimg.save('qr-code-with-logo.png')
+QRimg.save('qr-code-with-logo.png', scale=100.0)
 
 print('QR code generated!')
